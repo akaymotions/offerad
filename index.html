@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AkayMotions Portfolio</title>
+    <link rel="stylesheet" href="homepagestyle.css">
+    <script src="homepagescript.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <img src="Image/Akanimo website design.png" class="landingpage-image" alt="Landing Page Image">
+
+        <section class="section main-videos-section">
+            <h1>ANIMATED ADS & LOGO ANIMATION</h1>
+            <p class="tap-to-play">Tap to Play</p>
+
+            <div class="video-showcase-grid">
+                <!-- 1 -->
+                <div class="video-trigger">
+                    <video src="Video/CHIMOBI ADVERT_2.mp4"
+                           poster="Image/Chimobi thumbnail.png" muted loop playsinline>
+                    </video>
+                    <div class="play-button"></div>
+                    <p class="video-label">Chimobi Advert</p>
+                </div>
+
+                <div class="video-trigger">
+                    <video src="Video/REFTA FOODIES 1.mp4"
+                           poster="Image/Refta.png" muted loop playsinline>
+                    </video>
+                    <div class="play-button"></div>
+                    <p class="video-label">Refta Foodies</p>
+                </div>
+
+                <!-- 2 -->
+                <div class="video-trigger">
+                    <video src="Video/KUNLE KAPTURE AD_11 2.mp4"
+                           poster="Image/Kunle kapture ad thumbnail.png" muted loop playsinline>
+                    </video>
+                    <div class="play-button"></div>
+                    <p class="video-label">Refta Foodies</p>
+                </div>
+
+                <div class="video-trigger">
+                    <video src="Video/HONEYGOLD.mp4"
+                           poster="Image/Honeygold thumbnail.png" muted loop playsinline>
+                    </video>
+                    <div class="play-button"></div>
+                    <p class="video-label">Refta Foodies</p>
+                </div>
+
+                <!-- 3 -->
+                <div class="video-trigger">
+                    <video src="Video/DIAMOND MOTORS.mp4"
+                           poster="Image/DIAMOND THUMBNAIL.png" muted loop playsinline>
+                    </video>
+                    <div class="play-button"></div>
+                    <p class="video-label">Diamond Motors</p>
+                </div>
+
+                <!-- 4 -->
+                <div class="video-trigger">
+                    <video src="Video/Houdini Swap 2_1.mp4"
+                           poster="Image/Houdini swap.png" muted loop playsinline>
+                    </video>
+                    <div class="play-button"></div>
+                    <p class="video-label">Houdini Swap</p>
+                </div>
+
+                <!-- 5 -->
+                <div class="video-trigger">
+                    <video src="Video/Miannie Logo Animation.mp4"
+                           poster="Image/Miannie.png" muted loop playsinline>
+                    </video>
+                    <div class="play-button"></div>
+                    <p class="video-label">Miannie Logo</p>
+                </div>
+
+                <!-- 6 -->
+                <div class="video-trigger">
+                    <video src="Video/COCO SWEETS (new) 2.mp4"
+                           poster="Image/Coco sweets logo .png" muted loop playsinline>
+                    </video>
+                    <div class="play-button"></div>
+                    <p class="video-label">Coco Sweets</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="connect-section">
+            <h2>Connect With Me</h2>
+            <div class="social-links">
+                <a href="https://instagram.com/akaymotions_" target="_blank">
+                    <img src="icons/instagram_2111463.png" alt="Instagram">
+                    Instagram
+                </a>
+                <a href="https://wa.me/2348128042359" target="_blank">
+                    <img src="icons/whatsapp_2504957.png" alt="WhatsApp">
+                    WhatsApp
+                </a>
+                <a href="tel:+2348128042359">
+                    <img src="icons/mobile_16076069.png" alt="Call">
+                    Call Me
+                </a>
+            </div>
+        </footer>
+
+        <!-- Lightbox (kept unchanged) -->
+        <div class="video-lightbox" id="videoLightbox">
+            <span class="close-btn" onclick="closeLightbox()">
+                <img src="icons/cross-arrows_15990273.png" alt="Close" />
+            </span>
+            <video id="lightboxVideo" controls autoplay controlsList="nodownload" oncontextmenu="return false"></video>
+        </div>
+
+        <div class="scroll-down-indicator">
+            <span class="down-arrow">↓</span>
+        </div>
+    </div>
+
+    <!-- Video play/pause logic + lightbox (kept) -->
+    <script>
+        // Pause others when one plays
+        document.querySelectorAll('video').forEach(video => {
+            video.addEventListener('play', () => {
+                document.querySelectorAll('video').forEach(v => {
+                    if (v !== video) {
+                        v.pause();
+                        v.load(); // reset to poster
+                    }
+                });
+            });
+        });
+
+        // Open in lightbox on click
+        document.querySelectorAll('.video-trigger video').forEach(video => {
+            video.addEventListener('click', function () {
+                const lightbox = document.getElementById('videoLightbox');
+                const lightboxVideo = document.getElementById('lightboxVideo');
+                lightboxVideo.src = this.currentSrc;
+                lightbox.style.display = 'flex';
+            });
+        });
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('videoLightbox');
+            const lightboxVideo = document.getElementById('lightboxVideo');
+            lightbox.style.display = 'none';
+            lightboxVideo.pause();
+            lightboxVideo.src = '';
+        }
+
+        document.getElementById('videoLightbox').addEventListener('click', function(event) {
+            const videoContainer = document.getElementById('lightboxVideo');
+            const closeButton = document.querySelector('.close-btn');
+            if (!videoContainer.contains(event.target) && !closeButton.contains(event.target)) {
+                closeLightbox();
+            }
+        });
+
+        document.querySelector('.close-btn').addEventListener('click', function(event) {
+            event.stopPropagation();
+            closeLightbox();
+        });
+    </script>
+</body>
+</html>

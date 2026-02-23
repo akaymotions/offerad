@@ -1,0 +1,231 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'poppins', sans-serif;
+    background: #fff;
+    color: #111;
+    line-height: 1.6;
+}
+
+.container {
+    min-height: 100vh;
+}
+
+.landingpage-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+}
+
+h1 {
+    font-family: 'montserrat medium', sans-serif;
+}
+
+section h1 {
+    font-size: 2.2rem;
+    text-align: center;
+    margin: 60px 0 10px 0;
+}
+
+@media screen and (max-width: 600px) {
+    section h1 {
+        font-size: 1.7rem;
+        margin: 40px 0 10px 0;
+    }
+}
+
+/* Main video showcase grid (the only video section now) */
+.video-showcase-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    width: 90%;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+@media screen and (max-width: 600px) {
+    .video-showcase-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        width: 95%;
+        padding: 0 10px;
+    }
+}
+
+.video-trigger {
+    position: relative;
+    cursor: pointer;
+}
+
+.video-trigger video {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    display: block;
+    margin: 0;
+    transition: transform 0.3s ease;
+}
+
+.video-trigger:hover video {
+    transform: scale(1.04);
+}
+
+.play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    background: url('icons/material-symbols_play-circle-rounded.png') no-repeat center center;
+    background-size: contain;
+    pointer-events: none;
+    z-index: 2;
+}
+
+@media screen and (max-width: 600px) {
+    .play-button {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+.video-label {
+    font-family: 'Montserrat medium', sans-serif;
+    font-size: 1.5rem;
+    color: #333;
+    margin-top: 12px;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+@media screen and (max-width: 600px) {
+    .video-label {
+        font-size: 1.2rem;
+    }
+}
+
+/* Tap to Play text */
+.tap-to-play {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #444;
+    margin: 0 auto 30px auto;
+    font-style: italic;
+    opacity: 0.9;
+}
+
+/* Lightbox */
+.video-lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.92);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.video-lightbox video {
+    max-width: 92%;
+    max-height: 88%;
+    border-radius: 10px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    cursor: pointer;
+    z-index: 10000;
+}
+
+.close-btn img {
+    width: 36px;
+    height: 36px;
+}
+
+/* Footer */
+.connect-section {
+    margin-top: 80px;
+    padding: 60px 20px;
+    background-color: #111;
+    color: #fff;
+    text-align: center;
+}
+
+.connect-section h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    font-family: 'montserrat medium', sans-serif;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: white;
+    font-size: 1.1rem;
+    background: #222;
+    padding: 12px 24px;
+    border-radius: 10px;
+    transition: background 0.3s ease;
+}
+
+.social-links a:hover {
+    background: #444;
+}
+
+.social-links img {
+    width: 28px;
+    height: 28px;
+}
+
+/* Scroll-down indicator */
+.scroll-down-indicator {
+    position: fixed;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    animation: bounce 2s infinite;
+    cursor: pointer;
+    background: white;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+.down-arrow {
+    font-size: 2.2rem;
+    color: black;
+    font-weight: bold;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); }
+    40% { transform: translate(-50%, -15px); }
+    60% { transform: translate(-50%, -7px); }
+}
